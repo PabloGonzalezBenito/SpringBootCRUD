@@ -1,0 +1,41 @@
+<div th:replace="template :: head"></div>
+
+<body class="min-h-screen mt-5">
+    <div class="container mx-auto max-w-screen-sm px-4">
+
+        <div th:replace="template :: titulo"></div>
+
+
+        <div th:replace="template :: btnVolver"></div>
+
+        <section class="flex justify-center items-center">
+            <div class="max-w-md w-full rounded p-6 space-y-4">
+
+                <div th:if="${emptyFieldError}" class="error">
+                    <p>Please enter a valid name for the food!</p>
+                </div>
+
+                <form th:action="@{/saveFood}" th:object="${food}" method="post">
+                    <input type="hidden" th:field="*{id}" />
+                    <input
+                        class="w-full p-4 text-sm bg-gray-50 focus:outline-none border border-gray-500 rounded text-gray-600"
+                        type="text" th:field="*{name}" placeholder="Nombre">
+                    <input
+                        class="w-full p-4 text-sm bg-gray-50 focus:outline-none border border-gray-500 rounded text-gray-600"
+                        type="number" th:field="*{quantity}" min="1" placeholder="Cantidad">
+
+
+                    <!-- <div th:if="${emptyFieldError}" th:replace="template :: dangerAlert"> -->
+                    <div th:replace="template :: btnGuardar"></div>
+            </div>
+
+            </form>
+
+    </div>
+    </section>
+
+
+    </div>
+</body>
+
+</html>

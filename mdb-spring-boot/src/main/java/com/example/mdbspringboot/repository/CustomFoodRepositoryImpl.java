@@ -7,21 +7,21 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Component;
 
-import com.example.mdbspringboot.model.GroceryItem;
+import com.example.mdbspringboot.model.FoodModel;
 import com.mongodb.client.result.UpdateResult;
 
 @Component
-public class CustomItemRepositoryImpl implements CustomItemRepository {
+public class CustomFoodRepositoryImpl implements CustomFoodRepository {
 
 	@Autowired
 	MongoTemplate mongoTemplate;
 	
-	public void updateItemQuantity(String name, float newQuantity) {
+	public void updateFoodQuantity(String name, float newQuantity) {
 		Query query = new Query(Criteria.where("name").is(name));
 		Update update = new Update();
 		update.set("quantity", newQuantity);
 		
-		UpdateResult result = mongoTemplate.updateFirst(query, update, GroceryItem.class);
+		UpdateResult result = mongoTemplate.updateFirst(query, update, FoodModel.class);
 		
 		if(result == null)
 			System.out.println("No documents updated");
