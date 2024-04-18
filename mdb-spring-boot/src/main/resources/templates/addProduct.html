@@ -5,21 +5,26 @@
 
         <div th:replace="template :: titulo"></div>
 
+            <div class="py-4">
+                <h1 class="text-2xl font-bold">Añadir Nuevo Producto</h1>
+            </div>
 
         <div th:replace="template :: btnVolver"></div>
 
         <section class="flex justify-center items-center">
             <div class="max-w-md w-full rounded p-6 space-y-4">
 
-                <form th:action="@{/saveFood}" th:object="${food}" method="post">
+                <form th:action="@{/saveProduct}" th:object="${product}" method="post">
                     <input type="hidden" th:field="*{id}" />
                     <input
                         class="w-full p-4 text-sm bg-gray-50 focus:outline-none border border-gray-500 rounded text-gray-600"
                         type="text" th:field="*{name}" placeholder="Nombre">
                     <input
                         class="w-full p-4 text-sm bg-gray-50 focus:outline-none border border-gray-500 rounded text-gray-600"
-                        type="number" th:field="*{quantity}" min="1" placeholder="Cantidad">
-
+                        type="text" th:field="*{category}" placeholder="Categoría">
+                    <input
+                        class="w-full p-4 text-sm bg-gray-50 focus:outline-none border border-gray-500 rounded text-gray-600"
+                        type="text" th:field="*{measurementUnit}" placeholder="Unidad de Medida">
 
                     <!-- <div th:if="${emptyFieldError}" th:replace="template :: dangerAlert"> -->
                     <div th:replace="template :: btnGuardar"></div>

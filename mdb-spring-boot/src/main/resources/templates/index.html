@@ -5,31 +5,47 @@
     <div class="container mx-auto max-w-screen-sm px-4">
         <div th:replace="template :: titulo"></div>
 
-        <div th:replace="template :: btnNuevo"></div>
-
+        <div class="flex justify-center">
+            <div th:replace="template :: btnNuevo"></div>
+            <div th:replace="template :: btnProducto"></div>
+        </div>
         <div>
             <div class="flex items-center justify-center">
                 <div class="overflow-x-auto w-full">
-                    <table class="min-w-full bg-white shadow-md rounded-xl table-auto text-lg" th:if="${foods.size() > 0}">
+                    <table class="min-w-full bg-white shadow-md rounded-xl table-auto text-lg"
+                        th:if="${foods.size() > 0}">
+                        <tr>
+                            <td class="py-3 px-2 md:py-4 md:px-8 lg:py-5 lg:px-10 sm:text-2xl font-bold"
+                                th:text="Nombre"></td>
+                            <td class="py-3 px-2 md:py-4 md:px-8 lg:py-5 lg:px-10 sm:text-2xl font-bold"
+                                th:text="Cantidad"></td>
+
+
+                        </tr>
                         <tr th:each="item:${foods}">
-                            <td class="py-3 px-2 md:py-4 md:px-8 lg:py-5 lg:px-10 sm:text-2xl" th:text="${item.getName()}"></td>
-                            <td class="py-3 px-2 md:py-4 md:px-8 lg:py-5 lg:px-10 sm:text-2xl" th:text="${item.getQuantity()}"></td>
-                            <td class="py-3 px-2 md:py-4 md:px-8 lg:py-5 lg:px-10 sm:text-2xl"><a th:href="@{/add(id=${item.id})}">🖊️</a></td>
-                            <td class="py-3 px-2 md:py-4 md:px-8 lg:py-5 lg:px-10 sm:text-2xl"><a th:href="@{/delete/{id}(id=${item.id})}">❌</a></td>
+                            <td class="py-3 px-2 md:py-4 md:px-8 lg:py-5 lg:px-10 sm:text-2xl"
+                                th:text="${item.getName()}"></td>
+                            <td class="py-3 px-2 md:py-4 md:px-8 lg:py-5 lg:px-10 sm:text-2xl"
+                                th:text="${item.getQuantity()}"></td>
+                            <td class="py-3 px-2 md:py-4 md:px-8 lg:py-5 lg:px-10 sm:text-2xl"><a
+                                    th:href="@{/add(id=${item.id})}">🖊️</a></td>
+                            <td class="py-3 px-2 md:py-4 md:px-8 lg:py-5 lg:px-10 sm:text-2xl"><a
+                                    th:href="@{/delete/{id}(id=${item.id})}">❌</a></td>
                         </tr>
                     </table>
                 </div>
             </div>
-            </div>
-            <div class="py-7 flex justify-center">
+        </div>
+        <div class="py-7 flex justify-center">
             <a class="flex items-center w-full md:w-auto py-3 px-6 md:py-4 md:px-8 lg:py-5 lg:px-10 rounded-lg bg-red-500 font-sans text-xs font-bold uppercase text-white shadow-md shadow-green-500/20 transition-all hover:shadow-lg hover:shadow-green-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-            data-ripple-light="true" th:if="${foods.size() > 1}" th:href="@{/deleteAll}"><span class="mx-auto">Eliminar todo</span></a>
+                data-ripple-light="true" th:if="${foods.size() > 1}" th:href="@{/deleteAll}"><span
+                    class="mx-auto">Eliminar todo</span></a>
         </div>
-        </div>
+    </div>
 
-        <footer>
-            <p>Derechos de autor &copy; 2024. Todos los derechos reservados.</p>
-        </footer>
+    <footer>
+        <p>Derechos de autor &copy; 2024. Todos los derechos reservados.</p>
+    </footer>
 
     </div>
 </body>

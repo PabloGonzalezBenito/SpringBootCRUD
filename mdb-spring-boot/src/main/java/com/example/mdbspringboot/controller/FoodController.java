@@ -56,17 +56,10 @@ public class FoodController {
      */
     @PostMapping("/saveFood")
     public String saveFood(@ModelAttribute FoodModel food, Model model) {
-        if (food.getQuantity() == null) {
-            food.setQuantity(1);
-        }
-
-        // if (food.getName().trim().isEmpty()) {
-        //     return "error";
-        // }
         
         foodService.saveFood(food);
 
-        return "redirect:/";
+        return "redirect:/add";
     }
 
     @GetMapping("/delete/{id}")
