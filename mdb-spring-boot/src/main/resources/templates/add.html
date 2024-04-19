@@ -14,10 +14,10 @@
                 <form th:action="@{/saveFood}" th:object="${food}" method="post">
                     <input type="hidden" th:field="*{id}" />
                     <input
-                        class="w-full p-4 text-sm bg-gray-50 focus:outline-none border border-gray-500 rounded text-gray-600"
+                        class="w-full my-4 p-4 text-sm bg-gray-50 focus:outline-none border border-gray-500 rounded text-gray-600"
                         type="text" th:field="*{name}" placeholder="Nombre">
                     <input
-                        class="w-full p-4 text-sm bg-gray-50 focus:outline-none border border-gray-500 rounded text-gray-600"
+                        class="w-full my-4 p-4 text-sm bg-gray-50 focus:outline-none border border-gray-500 rounded text-gray-600"
                         type="number" th:field="*{quantity}" min="1" placeholder="Cantidad">
 
 

@@ -8,14 +8,14 @@ public class ProductModel {
     @Id
     private String id;
     private String name;
-    private CategoryModel category;
+    private String category;
     private String measurementUnit;
 
     public ProductModel() {
 
     }
 
-    public ProductModel(String id, String name, CategoryModel category, String measurementUnit) {
+    public ProductModel(String id, String name, String category, String measurementUnit) {
         this.id = id;
         this.name = name;
         this.category = category;
@@ -31,7 +31,7 @@ public class ProductModel {
         return name;
     }
 
-    public CategoryModel getCategory() {
+    public String getCategory() {
         return category;
     }
 
@@ -47,7 +47,7 @@ public class ProductModel {
         this.name = name;
     }
 
-    public void setCategory(CategoryModel category) {
+    public void setCategory(String category) {
         this.category = category;
     }
 

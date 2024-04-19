@@ -6,9 +6,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import com.example.mdbspringboot.model.FoodModel;
-import com.example.mdbspringboot.repository.CustomFoodRepository;
 import com.example.mdbspringboot.repository.FoodRepository;
 
 @Service
@@ -17,16 +17,13 @@ public class FoodService {
     @Autowired
     FoodRepository foodRepository;
 
-    @Autowired
-    CustomFoodRepository customRepo;
-
     // CRUD operations
 
     public void saveFood(FoodModel food) {
         // Verificar si ya existe un registro con el mismo nombre en la base de datos
         Optional<FoodModel> existingFoodOptional = foodRepository.findByName(food.getName());
         if (food.getName() != null && !food.getName().trim().isEmpty()) {
-            food.setName(food.getName().toLowerCase());
+            food.setName(StringUtils.capitalize(food.getName()));
             if (food.getQuantity() == null) {
                 food.setQuantity(1);
             }
@@ -35,7 +32,7 @@ public class FoodService {
                 // registro existente
                 FoodModel existingFood = existingFoodOptional.get();
                 existingFood.setQuantity(food.getQuantity());
-                existingFood.setName(existingFood.getName().toLowerCase());
+                existingFood.setName(StringUtils.capitalize(food.getName()));
                 foodRepository.save(existingFood);
             } else {
                 // Si no existe un registro con el mismo nombre, guardar un nuevo registro

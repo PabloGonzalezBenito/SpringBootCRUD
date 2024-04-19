@@ -5,9 +5,9 @@
 
         <div th:replace="template :: titulo"></div>
 
-            <div class="py-4">
-                <h1 class="text-2xl font-bold">Añadir Nuevo Producto</h1>
-            </div>
+        <div class="py-4">
+            <h1 class="text-2xl font-bold">Añadir Nuevo Producto</h1>
+        </div>
 
         <div th:replace="template :: btnVolver"></div>
 
@@ -17,25 +17,52 @@
                 <form th:action="@{/saveProduct}" th:object="${product}" method="post">
                     <input type="hidden" th:field="*{id}" />
                     <input
-                        class="w-full p-4 text-sm bg-gray-50 focus:outline-none border border-gray-500 rounded text-gray-600"
+                        class="w-full my-4 p-4 text-sm bg-gray-50 focus:outline-none border border-gray-500 rounded text-gray-600"
                         type="text" th:field="*{name}" placeholder="Nombre">
                     <input
-                        class="w-full p-4 text-sm bg-gray-50 focus:outline-none border border-gray-500 rounded text-gray-600"
+                        class="w-full my-4 p-4 text-sm bg-gray-50 focus:outline-none border border-gray-500 rounded text-gray-600"
                         type="text" th:field="*{category}" placeholder="Categoría">
                     <input
-                        class="w-full p-4 text-sm bg-gray-50 focus:outline-none border border-gray-500 rounded text-gray-600"
+                        class="w-full my-4 p-4 text-sm bg-gray-50 focus:outline-none border border-gray-500 rounded text-gray-600"
                         type="text" th:field="*{measurementUnit}" placeholder="Unidad de Medida">
 
-                    <!-- <div th:if="${emptyFieldError}" th:replace="template :: dangerAlert"> -->
                     <div th:replace="template :: btnGuardar"></div>
             </div>
 
             </form>
-
     </div>
     </section>
 
+    <div class="flex items-center justify-center">
+        <div class="overflow-x-auto w-full">
+            <table class="min-w-full bg-white shadow-md rounded-xl table-auto text-lg" th:if="${products.size() > 0}">
+                <tr>
+                    <td class="py-3 px-2 md:py-4 md:px-8 lg:py-5 lg:px-10 sm:text-2xl font-bold" th:text="Nombre"></td>
+                    <td class="py-3 px-2 md:py-4 md:px-8 lg:py-5 lg:px-10 sm:text-2xl font-bold" th:text="Categoría">
+                    <td class="py-3 px-2 md:py-4 md:px-8 lg:py-5 lg:px-10 sm:text-2xl font-bold">Unidad de medida</td>
+                    </td>
 
+
+                </tr>
+                <tr th:each="product:${products}">
+                    <td class="py-3 px-2 md:py-4 md:px-8 lg:py-5 lg:px-10 sm:text-2xl" th:text="${product.getName()}">
+                    </td>
+                    <td class="py-3 px-2 md:py-4 md:px-8 lg:py-5 lg:px-10 sm:text-2xl"
+                        th:text="${product.getCategory()}">
+                    </td>
+                    <td class="py-3 px-2 md:py-4 md:px-8 lg:py-5 lg:px-10 sm:text-2xl"
+                        th:text="${product.getMeasurementUnit()}"></td>
+
+                    <td class="py-3 px-2 md:py-4 md:px-8 lg:py-5 lg:px-10 sm:text-2xl"><a
+                            th:href="@{/delete//product/{id}(id=${product.id})}">❌</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</div>
+<div th:replace="template :: footer"></div>
+</div>
     </div>
 </body>
 

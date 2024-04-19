@@ -36,6 +36,13 @@
         </div>
     </div>
 
+    <div th:fragment="btnProducto">
+        <div class="py-7 mx-3 flex justify-center">
+            <a class="flex items-center w-full md:w-auto py-3 px-6 md:py-4 md:px-8 lg:py-5 lg:px-10 rounded-lg bg-indigo-500 font-sans text-xs font-bold uppercase text-white shadow-md shadow-green-500/20 transition-all hover:shadow-lg hover:shadow-green-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                data-ripple-light="true" th:href="@{/addProduct}"><span class="mx-auto">Nuevo Producto</span></a>
+        </div>
+    </div>
+
     <div th:fragment="btnVolver">
         <div class="py-7 flex justify-center">
             <a class="flex items-center w-full md:w-auto py-3 px-6 md:py-4 md:px-8 lg:py-5 lg:px-10 rounded-lg bg-blue-500 font-sans text-xs font-bold uppercase text-white shadow-md shadow-green-500/20 transition-all hover:shadow-lg hover:shadow-green-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
@@ -53,13 +60,6 @@
         </div>
     </div>
 
-    <div th:fragment="btnProducto">
-        <div class="py-7 mx-3 flex justify-center">
-            <button
-                class="flex items-center w-full md:w-auto py-3 px-6 md:py-4 md:px-8 lg:py-5 lg:px-10 rounded-lg bg-indigo-500 font-sans text-xs font-bold uppercase text-white shadow-md shadow-green-500/20 transition-all hover:shadow-lg hover:shadow-green-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                data-ripple-light="true" type="submit"><span class="mx-auto">Nuevo Producto</span></button>
-        </div>
-    </div>
 
     <!-- <div th:fragment="dangerAlert">
         <div class="container mx-auto my-5">
@@ -78,6 +78,12 @@
             </div>
         </div>
     </div> -->
+
+    <div th:fragment="footer">
+        <footer>
+            <p>Derechos de autor &copy; 2024. Todos los derechos reservados.</p>
+        </footer>
+    </div>
 
 </body>
 
